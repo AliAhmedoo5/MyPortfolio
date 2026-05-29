@@ -107,10 +107,10 @@ export function Hero() {
           <div className="relative rounded-xl bg-[#000000] technical-border overflow-hidden shadow-2xl w-full">
             {/* Terminal Header */}
             <div className="flex items-center px-4 py-3 bg-[#111111] border-b border-border">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-[#333333]" />
-                <div className="w-3 h-3 rounded-full bg-[#333333]" />
-                <div className="w-3 h-3 rounded-full bg-[#333333]" />
+              <div className="flex gap-2 group">
+                <div className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_8px_rgba(239,68,68,0.6)]" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80 shadow-[0_0_8px_rgba(234,179,8,0.6)]" />
+                <div className="w-3 h-3 rounded-full bg-green-500/80 shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
               </div>
               <div className="mx-auto flex items-center gap-2 text-xs font-mono text-text-muted">
                 <Terminal className="w-3.5 h-3.5" />
