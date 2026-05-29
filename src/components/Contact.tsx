@@ -60,9 +60,9 @@ export function Contact() {
 
     try {
       const data = {
-        service_id: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        template_id: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        user_id: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+        service_id: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_nfuh1gl",
+        template_id: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_gnm6iuh",
+        user_id: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "GCpZoLSvxFaqyUA4P",
         template_params: {
           from_name: formState.name,
           from_email: formState.email,
