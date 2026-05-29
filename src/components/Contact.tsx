@@ -7,6 +7,7 @@ import { Card } from "./ui/Card";
 import { PrecisionButton } from "./ui/GlowButton";
 import { GithubIcon, LinkedinIcon } from "./ui/Icons";
 import { Mail, Send, ArrowUpRight, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { sendEmailAction } from "@/app/actions/sendEmail";
 
 const socials = [
   {
@@ -35,7 +36,7 @@ export function Contact() {
     email: "",
     message: "",
   });
-  
+
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error" | "rate_limited">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -53,45 +54,26 @@ export function Contact() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
+
     if (status === "rate_limited") return;
     setStatus("submitting");
     setErrorMessage("");
 
     try {
-      const data = {
-        service_id: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_nfuh1gl",
-        template_id: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_gnm6iuh",
-        user_id: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "GCpZoLSvxFaqyUA4P",
-        template_params: {
-          from_name: formState.name,
-          from_email: formState.email,
-          message: formState.message,
-          to_name: "Ali Ahmed"
-        },
-      };
-
-      if (!data.service_id || !data.template_id || !data.user_id) {
-        throw new Error("EmailJS configuration is missing.");
-      }
-
-      const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const result = await sendEmailAction({
+        name: formState.name,
+        email: formState.email,
+        message: formState.message,
       });
 
-      if (!res.ok) {
-        const errorText = await res.text();
-        throw new Error(errorText || "Failed to send message.");
+      if (!result.success) {
+        throw new Error(result.error || "Failed to send message.");
       }
 
       setStatus("success");
       setFormState({ name: "", email: "", message: "" });
       localStorage.setItem("last_message_sent", Date.now().toString());
-      
+
     } catch (error: any) {
       console.error("EmailJS Error:", error);
       setStatus("error");
