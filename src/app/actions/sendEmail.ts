@@ -5,8 +5,9 @@ export async function sendEmailAction(formData: { name: string; email: string; m
     const serviceId = process.env.EMAILJS_SERVICE_ID;
     const templateId = process.env.EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.EMAILJS_PUBLIC_KEY;
+    const privateKey = process.env.EMAILJS_PRIVATE_KEY;
 
-    if (!serviceId || !templateId || !publicKey) {
+    if (!serviceId || !templateId || !publicKey || !privateKey) {
       console.error("Missing EmailJS environment variables on the server.");
       return { success: false, error: "Server configuration error. Please contact support." };
     }
@@ -15,6 +16,7 @@ export async function sendEmailAction(formData: { name: string; email: string; m
       service_id: serviceId,
       template_id: templateId,
       user_id: publicKey,
+      accessToken: privateKey,
       template_params: {
         from_name: formData.name,
         from_email: formData.email,
