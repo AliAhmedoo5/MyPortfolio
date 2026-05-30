@@ -36,7 +36,7 @@ export async function sendEmailAction(formData: { name: string; email: string; m
     if (!res.ok) {
       const errorText = await res.text();
       console.error("EmailJS Error response:", errorText);
-      return { success: false, error: "Failed to send message via email provider." };
+      return { success: false, error: `EmailJS Rejected: ${errorText}` };
     }
 
     return { success: true };
