@@ -56,8 +56,9 @@ function ProjectCard({
               src={project.image}
               alt={`${project.title} preview`}
               fill
+              quality={95}
               className="object-cover object-top transition-transform duration-500 opacity-100 grayscale-0 md:opacity-80 md:grayscale md:group-hover:scale-105 md:group-hover:opacity-100 md:group-hover:grayscale-0"
-              sizes={isFeatured ? "50vw" : "33vw"}
+              sizes={isFeatured ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 33vw"}
             />
             {/* Category badge */}
             <div className="absolute top-4 left-4 z-20">
@@ -157,6 +158,7 @@ function ProjectModal({
             src={project.image}
             alt={`${project.title} detail`}
             fill
+            quality={95}
             className="object-cover object-top opacity-90"
             sizes="(max-width: 768px) 100vw, 900px"
           />
