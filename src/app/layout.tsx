@@ -42,6 +42,10 @@ export const metadata: Metadata = {
     description:
       "Building production-ready mobile and web applications with modern AI-driven development methodologies.",
   },
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
   robots: {
     index: true,
     follow: true,
