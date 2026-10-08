@@ -22,7 +22,7 @@ const focuses = [
 ];
 
 const stats = [
-  { value: "4+", label: "Production Apps" },
+  { value: "5+", label: "Production Apps" },
   { value: "3", label: "Platforms" },
   { value: "10+", label: "Technologies" },
   { value: "∞", label: "Curiosity" },

@@ -1,6 +1,6 @@
 "use client";
 
-import { Code2, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 
 export function Footer() {
   return (
@@ -14,7 +14,7 @@ export function Footer() {
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="w-7 h-7 group-hover:scale-110 transition-transform drop-shadow-md">
               <rect width="256" height="256" fill="#0A0A0A" rx="56" />
-              <rect x="2" y="2" width="252" height="252" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4" rx="54" />
+              <rect x="2" y="2" width="252" height="252" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="4" rx="54" />
               <path d="M 112 56 H 144 L 192 184 H 152 L 128 120 L 104 184 H 64 Z" fill="#0070F3" />
               <rect x="112" y="140" width="84" height="24" fill="#EDEDED" />
             </svg>
